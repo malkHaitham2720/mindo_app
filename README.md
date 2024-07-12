@@ -1,0 +1,1 @@
+# mindo_app
