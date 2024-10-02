@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
+import 'package:mindo_app/pages/login_page.dart';
 
 import 'package:mindo_app/providers/mode_provider.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class WelcomePage extends ConsumerStatefulWidget {
   const WelcomePage({super.key});
@@ -11,10 +14,11 @@ class WelcomePage extends ConsumerStatefulWidget {
 
 class WelcomePageState extends ConsumerState<ConsumerStatefulWidget> {
   bool isSwap = false;
+  var index = 0;
   @override
   Widget build(BuildContext context) {
     final modechecker = ref.watch(mode);
-
+    PageController controller = PageController();
     double h = MediaQuery.of(context).size.height;
     double w = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -45,6 +49,7 @@ class WelcomePageState extends ConsumerState<ConsumerStatefulWidget> {
                 width: w * 0.9,
                 height: h * 0.9,
                 child: PageView(
+                  controller: controller,
                   onPageChanged: (value) => setState(() {
                     isSwap = !isSwap;
                   }),
@@ -195,6 +200,62 @@ Tap''',
                   ],
                 ),
               ),
+              isSwap
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment
+                          .spaceBetween, // Align TextButton to the right
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                              left: w *
+                                  0.46), // Keep the SmoothPageIndicator in the center
+                          child: SmoothPageIndicator(
+                            controller: controller, // PageController
+                            count: 2,
+                            effect: WormEffect(
+                              paintStyle: PaintingStyle.fill,
+                              activeDotColor: modechecker
+                                  ? const Color(0xff4657A7)
+                                  : const Color(0xff222222),
+                              dotWidth: w * 0.03,
+                              dotHeight: w * 0.03,
+                              dotColor: const Color(0xffFEECEA),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: w * 0.05),
+                          child: TextButton(
+                            onPressed: () {
+                              Get.to(const LoginPage(),
+                                  transition: Transition.fadeIn);
+                            },
+                            child: Text(
+                              "Start",
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontFamily: 'Roboto',
+                                fontSize: w * 0.05,
+                                color: Theme.of(context).colorScheme.onSurface,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : SmoothPageIndicator(
+                      controller: controller, // PageController
+                      count: 2,
+                      effect: WormEffect(
+                        paintStyle: PaintingStyle.fill,
+                        activeDotColor: modechecker
+                            ? const Color(0xff4657A7)
+                            : const Color(0xff222222),
+                        dotWidth: w * 0.03,
+                        dotHeight: w * 0.03,
+                        dotColor: const Color(0xffFEECEA),
+                      ),
+                    ),
             ],
           ),
         ),

@@ -54,8 +54,8 @@ class _LoginPageState extends ConsumerState<ConsumerStatefulWidget> {
                   padding: EdgeInsets.only(right: w * 0.64),
                   child: SvgPicture.asset(
                     modeChecker
-                        ? 'assets/images/login_page_images/login_logo_dark_mode.svg'
-                        : 'assets/images/login_page_images/login_logo_light_mode.svg',
+                        ? 'assets/images/login_page_images/login_logo_light_mode.svg'
+                        : 'assets/images/login_page_images/login_logo_dark_mode.svg',
                     width: w * 0.19,
                     height: w * 0.19,
                   ),

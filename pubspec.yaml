@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_riverpod: ^2.5.1
   smooth_page_indicator: ^1.2.0+3
+  flutter_svg: ^2.0.10+1
+  get: ^4.6.6
   
 
 
@@ -49,7 +51,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -64,6 +66,11 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/images/login_page_images/login_logo_light_mode.svg
+    - assets/images/login_page_images/login_logo_dark_mode.svg
+    - assets/icons/login_page_icons/closed_eye_for_pass.svg
+    - assets/icons/login_page_icons/arrow_for_login_button.svg
+    - assets/icons/login_page_icons/opened_eye_for_pass.svg
     - assets/images/splash_screen_images/light_logo.png
     - assets/images/splash_screen_images/dark_logo.png
     - assets/images/splash_screen_images/loading gif in light mode.gif
@@ -74,6 +81,7 @@ flutter:
     - assets/images/welcome_screen_images/brain male character having an idea.png
     - assets/images/welcome_screen_images/welcome_background_page_dark_mode_2.png
     - assets/images/welcome_screen_images/welcome_background_page_light_mode_2.png
+  
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
